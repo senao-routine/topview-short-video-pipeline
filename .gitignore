@@ -1,0 +1,23 @@
+# 認証・資格情報
+.topview/
+.env
+*.env.local
+credentials.json
+
+# セッション出力（動画・画像の大容量ファイル）
+topview_output/**/*.mp4
+topview_output/**/*.png
+topview_output/**/concat_list.txt
+
+# Python キャッシュ
+__pycache__/
+*.pyc
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# エディタ
+.vscode/
+*.swp
+*.swo

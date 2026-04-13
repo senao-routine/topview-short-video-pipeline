@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "topview-skill": {
+      "source": "topviewai/skill",
+      "sourceType": "github",
+      "computedHash": "c770843b78da7b8b018dd6064dfe8c6d6f047067a02b5d908ef8d4d9e113685f"
+    }
+  }
+}
