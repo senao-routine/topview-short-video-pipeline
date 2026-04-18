@@ -134,7 +134,12 @@ Renoise CLI (`video-maker:renoise-gen` スキル) の nano-banana-2 モデル
 
 3. 生成された画像をダウンロードして `04_character_image.png` に保存
 
-### デフォルトキャラクタープロンプト
+### キャラクタープロンプトの構成
+
+プロンプトは **固定パート** と **可変パート** で構成する。
+可変パートは Step 1〜3 で決定したテーマ・ターゲット視聴者・トーンに基づき、Claude が自動生成する。
+
+#### 固定パート（毎回そのまま使用）
 
 ```
 A Pixar-style 3D animated character for a vertical short video (9:16
@@ -144,33 +149,62 @@ STYLE: Pixar 3D animation aesthetic, similar to Monsters Inc. and
 Inside Out. Smooth polished surfaces, colorful, friendly yet slightly
 cool. Not overly cute, with a hint of coolness.
 
-CHARACTER: A single cute female character, looks like early 20s,
-approachable and intelligent, engineer-type girl.
+{CHARACTER}
 
-APPEARANCE:
-- Short bob or medium-length dark brown hair
-- Wearing large round-frame or black-rimmed glasses
-- Big expressive eyes with the lively Pixar-character look
-- Casual engineer-style outfit: graphic T-shirt under a relaxed
-  hoodie or cardigan, denim or chino pants
-- Overall muted palette (white, gray, navy, beige) with one pop
-  accent color (e.g., yellow sneakers)
-- Energetic, bright, talkative personality expression
+{APPEARANCE}
 
-BACKGROUND: Clean modern creator's workspace. Large desk, dual
-monitors, keyboard, indoor plants, stylish posters and lights on
-the wall. A bit futuristic and tech-vibe workspace. Warm lighting
-with cozy atmosphere.
+{BACKGROUND}
 
-COMPOSITION: Medium shot from chest up, character facing camera,
-ready to speak. Vertical 9:16 format. Character positioned in
-upper-center of frame to allow space for subtitles at bottom.
+{COMPOSITION}
 
 QUALITY: Ultra high quality, Pixar film production level, 4K,
 detailed lighting, character clearly visible and in sharp focus.
 ```
 
-ユーザーがキャラクターの変更を希望する場合はプロンプトを調整する。
+#### 可変パート（テーマに応じて自動生成）
+
+以下の4セクションを、テーマ・ターゲット視聴者・トーンから判断して英語で生成する。
+**視聴者がテーマを最もイメージしやすいキャラクター・背景**を選ぶこと。
+
+**CHARACTER:**
+- テーマの専門家・実践者として自然なキャラクターを設定する
+- 年齢・性別・雰囲気はテーマに最も合うものを選ぶ
+- 1キャラクターのみ（A single character）
+
+**APPEARANCE:**
+- テーマに合った服装・小物を具体的に指定する
+- 髪型、目の特徴、表情も指定する
+- カラーパレットはミュートトーン基調 + アクセントカラー1色
+- Big expressive eyes with the lively Pixar-character look（固定）
+
+**BACKGROUND:**
+- テーマに関連する場所・環境を設定する
+- 小物・装飾でテーマの雰囲気を補強する
+- Warm lighting with cozy atmosphere（固定）
+
+**COMPOSITION:**
+- Medium shot from chest up, character facing camera, ready to speak（固定）
+- Vertical 9:16 format（固定）
+- Character positioned in upper-center of frame to allow space for subtitles at bottom（固定）
+
+#### テーマ別の自動生成例
+
+| テーマ | CHARACTER | APPEARANCE | BACKGROUND |
+|--------|-----------|------------|------------|
+| プログラミング | 20代女性エンジニア | メガネ、パーカー+Tシャツ、黄色いスニーカー | テック系ワークスペース、デュアルモニター、観葉植物 |
+| 料理レシピ | 30代男性シェフ | エプロン、白シャツ、腕まくり、温かい笑顔 | おしゃれなキッチン、木のまな板、ハーブ、銅鍋 |
+| 投資・金融 | 30代女性アナリスト | スマートカジュアル、タブレット持ち、知的な表情 | モダンオフィス、株価チャートのモニター、観葉植物 |
+| ゲーム攻略 | 10代後半ゲーマー | ヘッドセット、ゲーミングTシャツ、興奮した表情 | ゲーミングルーム、RGB照明、コントローラー、ポスター |
+| 旅行・観光 | 20代バックパッカー | カジュアルな旅行服、カメラ、サングラスを頭に | 空港ラウンジや絶景スポット、スーツケース |
+| 健康・フィットネス | 20代トレーナー | スポーツウェア、スマートウォッチ、爽やかな笑顔 | 明るいジム、ヨガマット、ダンベル、窓から光 |
+
+#### 生成ルール
+
+1. プロンプトは**必ず英語**で書くこと
+2. 各セクションは具体的・描写的に書く（抽象的な表現は避ける）
+3. テーマの「顔」になるキャラクターを意識する
+4. ユーザーが `【その他要望】` でキャラクター指定をしている場合はそれを優先する
+5. 生成したプロンプト全文をターミナルに表示してから画像生成に進む
 
 ### Renoise CLI パス
 
