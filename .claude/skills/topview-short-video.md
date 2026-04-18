@@ -400,13 +400,24 @@ AskUserQuestion で以下の選択肢を提示:
 
 キャラクターの性別に応じてボイスを自動で切り替える。
 
-| キャラクター性別 | ボイス名 | Voice ID |
-|---|---|---|
-| **女性** | Yuka | `Elu2nLYQkwhjIAtEOYlX8a2MSRaVOBgk` |
-| **男性** | Yuma | `mrnOS0oAI096UQYY6NUGKgR8hdKyj8Ck` |
+#### 女性キャラクターの場合
 
-**判定ルール:**
+| ボイス名 | Voice ID |
+|---|---|
+| Yuka | `Elu2nLYQkwhjIAtEOYlX8a2MSRaVOBgk` |
+
+#### 男性キャラクターの場合（3つからランダムで1つ選択）
+
+| ボイス名 | Voice ID |
+|---|---|
+| Haruto | `j8Wk8Jpwm9E6x0DlmHQ4bNut7QuAsAUQ` |
+| Tomoya | `7SPpEQ3KqxJf57AtQlXV0ncNb5TLiMn8` |
+| Yuki outdoors | `egjA5VyBLgv1FKhDvORVPH6jmeC9obZN` |
+
+**選択ルール:**
 - Step 4 で決定した CHARACTER の性別を参照する
+- 男性の場合は上記3つの中から**ランダム**で1つ選ぶ（毎回同じにならないようにする）
+- 1つのセッション内では3シーンすべて同じボイスを使用する（シーン間で声が変わらないように）
 - 性別が明示されていない場合は、ユーザーに確認する
 
 ### Topview Skill ベースパス
