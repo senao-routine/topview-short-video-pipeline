@@ -391,11 +391,23 @@ AskUserQuestion で以下の選択肢を提示:
 
 | 項目 | デフォルト値 |
 |---|---|
-| ボイス | Yuka (`Elu2nLYQkwhjIAtEOYlX8a2MSRaVOBgk`) |
 | 言語 | 日本語 (ja) |
-| キャプション | `1e7c01421c2a4597902bd6c8c249d26c` |
+| キャプション | `7e42d4f23fdf4a5fae97aecc5ef38436`（シンプル白文字） |
 | モード | avatar4（高品質） |
 | タイムアウト | 1200秒 |
+
+### ボイスの自動選択
+
+キャラクターの性別に応じてボイスを自動で切り替える。
+
+| キャラクター性別 | ボイス名 | Voice ID |
+|---|---|---|
+| **女性** | Yuka | `Elu2nLYQkwhjIAtEOYlX8a2MSRaVOBgk` |
+| **男性** | Yuma | `mrnOS0oAI096UQYY6NUGKgR8hdKyj8Ck` |
+
+**判定ルール:**
+- Step 4 で決定した CHARACTER の性別を参照する
+- 性別が明示されていない場合は、ユーザーに確認する
 
 ### Topview Skill ベースパス
 
